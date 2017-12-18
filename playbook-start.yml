@@ -1,0 +1,21 @@
+
+
+---
+- hosts: 192.168.112.190
+  tasks: 
+  - name: Remove old directory
+    shell: "rm -rf ~/test_ansible"
+  - name: Create Folder
+    file: 
+      path: ~/test_ansible
+      state: directory
+  - name: clone repository
+    git:
+      repo: 'https://github.com/ganesh-patil/dockerized-php.git'
+      dest: ~/test_ansible
+  - name: start docker container
+    shell: "docker-compose up -d"
+    args:
+      chdir: ~/test_ansible
+
+

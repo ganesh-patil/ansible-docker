@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+tasks:
+- name: make sure docker-python RPM is not installed
+yum:
+name: docker-python
+state: absent
+- name: make sure required PyPi packages are installed
+pip:
+name: '{{ item }}'
+state: present
+with_items: 
+- docker-py==1.2.3
+- six>=1.4.0
+- name: run hello-world docker container
+docker:
+name: hello-world
+image: hello-world
+state: present
+sudo: yes

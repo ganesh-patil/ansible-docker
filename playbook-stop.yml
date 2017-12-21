@@ -4,7 +4,7 @@
 - hosts: 192.168.112.190
   tasks: 
   - name: Stop docker container
-    shell: "docker-compose down"
+    shell: "/usr/local/bin/docker-compose down"
     args:
       chdir: ~/test_ansible
   - name: Remove old directory

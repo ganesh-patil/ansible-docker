@@ -1,6 +1,6 @@
 
 ---
-- hosts: localhost
+- hosts: 192.168.112.190
   environment:
     PYTHONPATH: "/usr/local/Cellar/python/2.7.12/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
   tasks: 
@@ -15,7 +15,9 @@
       repo: 'https://github.com/ganesh-patil/dockerized-php.git'
       dest: ~/test_ansible
   - name: start docker container
-    docker_service:
-        project_src: ~/test_ansible
-        state: present
-
+    shell: "/usr/local/bin/docker-compose up -d"
+    args:
+      chdir: ~/test_ansible
+    # docker_service:
+    #     project_src: ~/test_ansible
+    #     state: present

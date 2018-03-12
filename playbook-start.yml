@@ -1,7 +1,7 @@
 
 
 ---
-- hosts: 192.168.112.190
+- hosts: '{{ host }}'
   tasks: 
   - name: Remove old directory
     shell: "rm -rf ~/test_ansible"
